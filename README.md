@@ -1,5 +1,5 @@
 # Tauri mobile
-This is a tauri mobile demo.
+一个使用Tauri 技术，能够把React、Vue等JS 项目打包成为mobile和桌面端的项目。使用[Tauri 2.0](https://beta.tauri.app)
 
 ## usages
 在项目根目录内可以使用命令，快速生成android或者ios的代码目录，
