@@ -1,6 +1,8 @@
 import {useState} from "react";
+import {Link, Route, Routes} from "react-router-dom";
 import reactLogo from "./assets/react.svg";
 import "./App.css";
+import AdditionalPage from "./AdditionalPage";
 
 function App() {
     const [greetMsg, setGreetMsg] = useState("");
@@ -8,37 +10,47 @@ function App() {
 
     return (
         <div className="container">
-            <h1>Welcome to Tauri!</h1>
+            <Routes>
+                <Route path="/" element={
+                    <>
+                        <h1>Welcome to Tauri!</h1>
 
-            <div className="row">
-                <a href="https://vitejs.dev" target="_blank">
-                    <img src="/vite.svg" className="logo vite" alt="Vite logo"/>
-                </a>
-                <a href="https://tauri.app" target="_blank">
-                    <img src="/tauri.svg" className="logo tauri" alt="Tauri logo"/>
-                </a>
-                <a href="https://reactjs.org" target="_blank">
-                    <img src={reactLogo} className="logo react" alt="React logo"/>
-                </a>
-            </div>
+                        <div className="row">
+                            <a href="https://vitejs.dev" target="_blank">
+                                <img src="/vite.svg" className="logo vite" alt="Vite logo"/>
+                            </a>
+                            <a href="https://tauri.app" target="_blank">
+                                <img src="/tauri.svg" className="logo tauri" alt="Tauri logo"/>
+                            </a>
+                            <a href="https://reactjs.org" target="_blank">
+                                <img src={reactLogo} className="logo react" alt="React logo"/>
+                            </a>
+                        </div>
 
-            <p>Click on the Tauri, Vite, and React logos to learn more.</p>
+                        <p>Click on the Tauri, Vite, and React logos to learn more.</p>
 
-            <form
-                className="row"
-                onSubmit={(e) => {
-                    e.preventDefault();
-                }}
-            >
-                <input
-                    id="greet-input"
-                    onChange={(e) => setName(e.currentTarget.value)}
-                    placeholder="Enter a name..."
-                />
-                <button type="submit">Greet</button>
-            </form>
+                        <form
+                            className="row"
+                            onSubmit={(e) => {
+                                e.preventDefault();
+                                setGreetMsg(`Hello, ${name}!`);
+                            }}
+                        >
+                            <input
+                                id="greet-input"
+                                onChange={(e) => setName(e.currentTarget.value)}
+                                placeholder="Enter a name..."
+                            />
+                            <button type="submit">Greet</button>
+                        </form>
 
-            <p>{greetMsg}</p>
+                        <p>{greetMsg}</p>
+
+                        <Link to="/additional-page">Go to Additional Page</Link>
+                    </>
+                }/>
+                <Route path="/additional-page" element={<AdditionalPage/>}/>
+            </Routes>
         </div>
     );
 }
