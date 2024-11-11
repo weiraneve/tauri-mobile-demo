@@ -1,10 +1,6 @@
-#![cfg_attr(
-    all(not(debug_assertions), target_os = "windows"),
-    windows_subsystem = "windows"
-)]
+// Prevents additional console window on Windows in release, DO NOT REMOVE!!
+#![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
-use app::AppBuilder;
-
-pub fn main() {
-    AppBuilder::new().run();
+fn main() {
+    tauri_mobile_demo_lib::run()
 }
